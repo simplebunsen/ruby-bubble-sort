@@ -1,15 +1,19 @@
-def bubble_sort(unsorted_array)
+def bubble_sort(array)
 
 
   #worst case conditions
-  max_iterations = unsorted_array.length - 1
+  max_sort_iterations = array.length - 1
   is_sorted = false
 
-  #each iteration, ignore i elements on the right since they will always be at the right positions
+  #each iteration, ignore sort_i elements at the end since they will always be at the right positions
 
-  for i in 0..max_iterations do
-    
-    
+  for sort_i in 1..max_sort_iterations do
+    break if is_sorted #TODO: implement is_sorted setter
+
+    for i in 0..array.length - 1 - sort_i do
+      array[i] < array[i+1] ? next : array[i], array[i+1] = array[i+1], array[i] #parallel assignment "swap"
+    end   
+
   end
 
 
