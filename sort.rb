@@ -1,18 +1,20 @@
 def bubble_sort(array)
 
-
-  #calculate-no-more-than-worst-case conditions
-  max_sort_iterations = array.length - 1
+  #don't calculate more iterations than necass
+  max_sort_iterations = array.length - 2 #subtract 2 since were making our iteration count 0 based instead of 1 based
   is_sorted = false
 
 
-  for sort_i in 1..max_sort_iterations do
+  for m in 0..max_sort_iterations do
     break if is_sorted #TODO: implement PROPER is_sorted setter
-    is_sorted = true #boo, hacky
 
-    #each iteration, ignore sort_i elements at the end since they will always be at the right positions
-    for i in 0..array.length - 1 - sort_i do
-      array[i] < array[i+1] ? next : (array[i], array[i+1] = array[i+1], array[i]; is_sorted = false) #parallel assignment "swap"
+    #after m iteration, ignore m elements at the end since they will always be at the right positions
+    #in the first iteration, m is 0 since we didn't finish m=1 iteration yet
+    for i in 0..array.length - 2 - m do
+      is_sorted = true unless is_sorted #boo, hacky (but less so)
+
+      #parallel assignment "swap", also sets "not sorted" if we change anything
+      array[i] < array[i+1] ? next : (array[i], array[i+1] = array[i+1], array[i]; is_sorted = false) 
     end   
 
   end
